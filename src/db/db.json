@@ -1,0 +1,49 @@
+{
+  "customers": [
+    {
+      "name": "Lukasek",
+      "surname": "Dvorsky",
+      "email": "dvorskejlukas3333@gmail.com",
+      "phone": "737008313",
+      "id": "9ff6"
+    },
+    {
+      "name": "Pepa",
+      "surname": "Zdepa",
+      "email": "pepa@seznam.cz",
+      "phone": "234234234",
+      "id": "adbe"
+    }
+  ],
+  "groups": [
+    {
+      "id_group": 1,
+      "name": "QA",
+      "id": "5a36"
+    },
+    {
+      "id_group": 2,
+      "name": "Tester",
+      "id": "1af0"
+    },
+    {
+      "id_group": 3,
+      "name": "Developer",
+      "id": "0481"
+    }
+  ],
+  "group_customer": [
+    {
+      "id": "b333",
+      "id_group": 2
+    },
+    {
+      "id": "76da",
+      "id_group": 3
+    },
+    {
+      "id": "f21c",
+      "id_group": 1
+    }
+  ]
+}
