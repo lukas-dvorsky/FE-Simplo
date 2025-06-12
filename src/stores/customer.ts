@@ -20,16 +20,18 @@ export const useCustomersStore = defineStore('customers', () => {
   const customerGroups = ref<CustomerGroups[]>([])
   const isLoading = ref(true)
 
-  const createCustomer = async (values: any) => {
+  const createCustomer = async (values: Omit<Customer, 'id'>) => {
     try {
-      await fetch('http://localhost:3000/customers', {
+      const response = await fetch('http://localhost:3000/customers', {
         method: 'POST',
         body: JSON.stringify(values),
         headers: {
           'Content-Type': 'application/json',
         },
       })
+      const newCustomer = await response.json()
       alert('Customer added succesfully')
+      return newCustomer
     } catch (err) {
       alert(err)
     }

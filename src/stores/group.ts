@@ -10,7 +10,7 @@ export const useGroupsStore = defineStore('groups', () => {
   const groups = ref<Group[]>([])
   const isLoading = ref(true)
 
-  const createGroup = async (values: any) => {
+  const createGroup = async (values: Omit<Group, 'id'>) => {
     try {
       await fetch('http://localhost:3000/groups', {
         method: 'POST',

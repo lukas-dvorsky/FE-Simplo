@@ -3,9 +3,10 @@ import { z } from 'zod'
 import { useField, useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { useCustomersStore } from '@/stores/customer'
+import { useGroupCustomerStore, type GroupCustomer } from '@/stores/group_customer'
 import { defineProps, onMounted, ref } from 'vue'
 import type { Customer } from '@/stores/customer'
-import type { Group } from '@/stores/group'
+import { useGroupsStore, type Group } from '@/stores/group'
 import GroupSearch from '@/components/GroupSearch.vue'
 import Tag from '@/components/Tag.vue'
 
@@ -14,7 +15,13 @@ const props = defineProps<{
   data?: Customer
 }>()
 
+const customerStore = useCustomersStore()
+const groupCustomerStore = useGroupCustomerStore()
+const groupsStore = useGroupsStore()
+
 const selectedGroups = ref<Group[]>([])
+const currentCustomerGroupsState = ref<GroupCustomer[]>([])
+
 const emit = defineEmits<{
   (e: 'hideModal'): void
 }>()
@@ -38,15 +45,28 @@ const { handleSubmit, errors, setValues } = useForm({
   },
 })
 
-const customerStore = useCustomersStore()
-
 const { value: name } = useField('name')
 const { value: surname } = useField('surname')
 const { value: email } = useField('email')
 const { value: phone } = useField('phone')
 
 onMounted(() => {
+  const relatedGroups = <Group[]>[]
+  groupCustomerStore.readGroupCustomer()
+  groupCustomerStore.groupCustomer.forEach((groupcustomer) => {
+    if (groupcustomer.id_customer === props.data?.id) {
+      groupsStore.groups.forEach((group) => {
+        if (group.id === groupcustomer.id_group) {
+          relatedGroups.push(group)
+          currentCustomerGroupsState.value.push(groupcustomer)
+        }
+      })
+    }
+  })
+
   if (props.data) {
+    selectedGroups.value = relatedGroups
+
     setValues({
       name: props.data.name,
       surname: props.data.surname,
@@ -58,11 +78,36 @@ onMounted(() => {
 
 const onSubmit = handleSubmit(async (values) => {
   if (!props.data) {
-    await customerStore.createCustomer(values)
+    const newCustomer = await customerStore.createCustomer(values)
+    selectedGroups.value.forEach(async (selectedGroup) => {
+      await groupCustomerStore.createGroupCustomer({
+        id_customer: newCustomer.id,
+        id_group: selectedGroup.id,
+      })
+    })
   } else {
     await customerStore.updateCustomer(props.data.id, values)
+
+    const toDelete = currentCustomerGroupsState.value.filter(
+      (curr) => !selectedGroups.value.some((selected) => selected.id === curr.id_group),
+    )
+    const toCreate = selectedGroups.value.filter(
+      (selected) => !currentCustomerGroupsState.value.some((curr) => curr.id_group === selected.id),
+    )
+
+    toDelete.forEach(async (groupcustomer) => {
+      await groupCustomerStore.deleteGroupCustomer(groupcustomer.id)
+    })
+
+    toCreate.forEach(async (group) => {
+      await groupCustomerStore.createGroupCustomer({
+        id_customer: props.data?.id!,
+        id_group: group.id,
+      })
+    })
   }
   await customerStore.readCustomer()
+  await groupCustomerStore.readGroupCustomer()
   emit('hideModal')
 })
 

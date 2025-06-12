@@ -15,18 +15,18 @@
       "id": "febf"
     },
     {
-      "id": "133a",
-      "name": "asdf",
-      "surname": "asdf",
-      "email": "123@123.xc",
-      "phone": "123123123"
+      "name": "Michal",
+      "surname": "Spanel",
+      "email": "jsem@zespanelska.cz",
+      "phone": "123444555",
+      "id": "f81f"
     },
     {
-      "id": "8473",
-      "name": "asdf",
-      "surname": "asdfa",
-      "email": "sdf@asdfasef.cx",
-      "phone": "1233445456"
+      "name": "Ahoj",
+      "surname": "Prosim",
+      "email": "funguj@prosim.moc",
+      "phone": "777777777",
+      "id": "fa31"
     }
   ],
   "groups": [
@@ -47,9 +47,15 @@
       "name": "VIP"
     },
     {
-      "id": "e84b",
-      "name": "Curacu"
+      "name": "Curacu",
+      "id": "e84b"
     }
   ],
-  "group_customer": []
+  "group_customer": [
+    {
+      "id": "9839",
+      "id_customer": "9ff6",
+      "id_group": "5a36"
+    }
+  ]
 }

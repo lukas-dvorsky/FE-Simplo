@@ -7,13 +7,16 @@ import CustomerForm from '@/components/CustomerForm.vue'
 import GroupForm from '@/components/GroupForm.vue'
 import Modal from '@/components/Modal.vue'
 import { useGroupsStore } from '@/stores/group'
+import { useGroupCustomerStore } from '@/stores/group_customer'
 
 const customerStore = useCustomersStore()
 const groupStore = useGroupsStore()
+const groupCustomerStore = useGroupCustomerStore()
 
 onMounted(() => {
   customerStore.readCustomer()
   groupStore.readGroup()
+  groupCustomerStore.readGroupCustomer()
 })
 </script>
 
