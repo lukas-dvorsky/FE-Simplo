@@ -3,7 +3,7 @@ import type { Group } from '@/stores/group'
 import { defineProps, defineEmits } from 'vue'
 
 const emit = defineEmits<{
-  (e: 'handleGroupRemove', id: String): void
+  (e: 'handleGroupRemove', id: string): void
 }>()
 
 const props = defineProps<{

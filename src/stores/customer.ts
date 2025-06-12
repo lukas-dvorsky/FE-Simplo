@@ -78,5 +78,25 @@ export const useCustomersStore = defineStore('customers', () => {
     }
   }
 
-  return { customers, isLoading, createCustomer, readCustomer, updateCustomer, deleteCustomer }
+  const readGroupsForCustomer = async (customerId: string) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/group_customer?id_customer=${customerId}&_expand=group`,
+      )
+      const data = await response.json()
+      return data
+    } catch (err) {
+      alert(err)
+    }
+  }
+
+  return {
+    customers,
+    isLoading,
+    createCustomer,
+    readCustomer,
+    updateCustomer,
+    deleteCustomer,
+    readGroupsForCustomer,
+  }
 })

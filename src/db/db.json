@@ -27,6 +27,20 @@
       "email": "funguj@prosim.moc",
       "phone": "777777777",
       "id": "fa31"
+    },
+    {
+      "id": "d431",
+      "name": "Streda",
+      "surname": "Wednesday",
+      "email": "streda@neni.utery",
+      "phone": "605789565"
+    },
+    {
+      "name": "asdf",
+      "surname": "asdf",
+      "email": "asdfasdf@asf.ds",
+      "phone": "47847484484",
+      "id": "3a3a"
     }
   ],
   "groups": [
@@ -47,7 +61,7 @@
       "name": "VIP"
     },
     {
-      "name": "Curacu",
+      "name": "Curaci",
       "id": "e84b"
     }
   ],
@@ -56,6 +70,16 @@
       "id": "9839",
       "id_customer": "9ff6",
       "id_group": "5a36"
+    },
+    {
+      "id": "686c",
+      "id_customer": "d431",
+      "id_group": "1af0"
+    },
+    {
+      "id": "eeca",
+      "id_customer": "3a3a",
+      "id_group": "0481"
     }
   ]
 }

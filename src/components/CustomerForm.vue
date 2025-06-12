@@ -50,22 +50,21 @@ const { value: surname } = useField('surname')
 const { value: email } = useField('email')
 const { value: phone } = useField('phone')
 
-onMounted(() => {
-  const relatedGroups = <Group[]>[]
-  groupCustomerStore.readGroupCustomer()
-  groupCustomerStore.groupCustomer.forEach((groupcustomer) => {
-    if (groupcustomer.id_customer === props.data?.id) {
-      groupsStore.groups.forEach((group) => {
-        if (group.id === groupcustomer.id_group) {
-          relatedGroups.push(group)
-          currentCustomerGroupsState.value.push(groupcustomer)
-        }
-      })
-    }
-  })
-
+onMounted(async () => {
   if (props.data) {
-    selectedGroups.value = relatedGroups
+    const groupCustomers = await customerStore.readGroupsForCustomer(props.data.id)
+
+    const matchedGroups: Group[] = []
+
+    groupCustomers.forEach((groupcustomer: GroupCustomer) => {
+      const foundGroup = groupsStore.groups.find((group) => group.id === groupcustomer.id_group)
+      if (foundGroup) {
+        matchedGroups.push(foundGroup)
+      }
+    })
+
+    currentCustomerGroupsState.value = groupCustomers
+    selectedGroups.value = matchedGroups
 
     setValues({
       name: props.data.name,
@@ -79,12 +78,12 @@ onMounted(() => {
 const onSubmit = handleSubmit(async (values) => {
   if (!props.data) {
     const newCustomer = await customerStore.createCustomer(values)
-    selectedGroups.value.forEach(async (selectedGroup) => {
+    for (const selectedGroup of selectedGroups.value) {
       await groupCustomerStore.createGroupCustomer({
         id_customer: newCustomer.id,
         id_group: selectedGroup.id,
       })
-    })
+    }
   } else {
     await customerStore.updateCustomer(props.data.id, values)
 
@@ -95,17 +94,18 @@ const onSubmit = handleSubmit(async (values) => {
       (selected) => !currentCustomerGroupsState.value.some((curr) => curr.id_group === selected.id),
     )
 
-    toDelete.forEach(async (groupcustomer) => {
+    for (const groupcustomer of toDelete) {
       await groupCustomerStore.deleteGroupCustomer(groupcustomer.id)
-    })
+    }
 
-    toCreate.forEach(async (group) => {
+    for (const group of toCreate) {
       await groupCustomerStore.createGroupCustomer({
-        id_customer: props.data?.id!,
+        id_customer: props.data.id,
         id_group: group.id,
       })
-    })
+    }
   }
+
   await customerStore.readCustomer()
   await groupCustomerStore.readGroupCustomer()
   emit('hideModal')
@@ -116,8 +116,9 @@ const handleGroupSelect = (group: Group) => {
     selectedGroups.value.push(group)
   }
 }
-const handleGroupRemove = (id: String) => {
-  selectedGroups.value = selectedGroups.value.filter((group) => group.id != id)
+
+const handleGroupRemove = (id: string) => {
+  selectedGroups.value = selectedGroups.value.filter((group) => group.id !== id)
 }
 </script>
 
