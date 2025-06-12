@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import type { Component } from 'vue'
-import type { Customer } from '@/stores/customer'
+import { useCustomersStore, type Customer } from '@/stores/customer'
 import { ref } from 'vue'
-import type { Group } from '@/stores/group'
+import { type Group } from '@/stores/group'
 
 const props = defineProps<{
   form: Component

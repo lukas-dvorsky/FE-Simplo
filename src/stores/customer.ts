@@ -43,8 +43,8 @@ export const useCustomersStore = defineStore('customers', () => {
       const response = await fetch('http://localhost:3000/customers')
       const data = await response.json()
       customers.value = data
-    } catch (error) {
-      console.error('Error loading customers:', error)
+    } catch (err) {
+      alert(err)
     } finally {
       isLoading.value = false
     }
@@ -84,6 +84,7 @@ export const useCustomersStore = defineStore('customers', () => {
         `http://localhost:3000/group_customer?id_customer=${customerId}&_expand=group`,
       )
       const data = await response.json()
+      readCustomer()
       return data
     } catch (err) {
       alert(err)

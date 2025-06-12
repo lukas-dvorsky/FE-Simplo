@@ -1,30 +1,46 @@
 <script setup lang="ts">
 import type { Customer } from '@/stores/customer'
 import { useCustomersStore } from '@/stores/customer'
-import { defineProps, onMounted, ref } from 'vue'
+import { defineProps, computed } from 'vue'
 import Modal from '@/components/Modal.vue'
 import AddCustomer from '@/components/CustomerForm.vue'
 import CustomerTag from '@/components/CustomerTag.vue'
 import { useGroupCustomerStore } from '@/stores/group_customer'
+import { useGroupsStore, type Group } from '@/stores/group'
 
 const customerStore = useCustomersStore()
 const groupCustomerStore = useGroupCustomerStore()
+const groupsStore = useGroupsStore()
 
 const props = defineProps<{
   customer: Customer
 }>()
 
-onMounted(() => {
-  groupCustomerStore.groupCustomer
+const customerGroups = computed(() => {
+  const customerGroupConnections = groupCustomerStore.groupCustomer.filter(
+    (gc) => gc.id_customer === props.customer.id,
+  )
+
+  return customerGroupConnections
+    .map((gc) => groupsStore.groups.find((group) => group.id === gc.id_group))
+    .filter((g): g is Group => !!g)
 })
 
-const handleDeleteCustomer = () => {
+const handleDeleteCustomer = async () => {
   if (
     window.confirm(
-      `Do you really want to remove customer: ${props.customer.name} ${props.customer.surname}`,
+      `Do you really want to remove customer: ${props.customer.name} ${props.customer.surname}?`,
     )
   ) {
-    customerStore.deleteCustomer(props.customer.id)
+    const connections = groupCustomerStore.groupCustomer.filter(
+      (groupcustomer) => groupcustomer.id_customer === props.customer.id,
+    )
+
+    connections.forEach(async (connection) => {
+      await groupCustomerStore.deleteGroupCustomer(connection.id)
+    })
+
+    await customerStore.deleteCustomer(props.customer.id)
   }
 }
 </script>
@@ -36,7 +52,7 @@ const handleDeleteCustomer = () => {
     <p>{{ customer.phone }}</p>
   </div>
   <div>
-    <!-- <CustomerTag :tag-name="" /> -->
+    <CustomerTag v-for="group in customerGroups" :key="group.id" :tag-name="group.name" />
   </div>
   <Modal :form="AddCustomer" :data="customer" />
 

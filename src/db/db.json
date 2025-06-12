@@ -1,46 +1,18 @@
 {
   "customers": [
     {
-      "name": "Lukas",
-      "surname": "Dvorsky",
-      "email": "dvorskejlukas3333@gmail.com",
-      "phone": "737008313",
-      "id": "9ff6"
-    },
-    {
-      "name": "Lubos",
-      "surname": "Hrosek",
-      "email": "hrosek@gmail.veliky",
-      "phone": "123345468",
-      "id": "febf"
-    },
-    {
-      "name": "Michal",
-      "surname": "Spanel",
-      "email": "jsem@zespanelska.cz",
-      "phone": "123444555",
-      "id": "f81f"
-    },
-    {
-      "name": "Ahoj",
-      "surname": "Prosim",
-      "email": "funguj@prosim.moc",
-      "phone": "777777777",
-      "id": "fa31"
-    },
-    {
-      "id": "d431",
-      "name": "Streda",
-      "surname": "Wednesday",
-      "email": "streda@neni.utery",
-      "phone": "605789565"
-    },
-    {
+      "id": "6407",
       "name": "asdf",
       "surname": "asdf",
-      "email": "asdfasdf@asf.ds",
-      "phone": "47847484484",
-      "id": "3a3a"
+      "email": "asdf@asdf.asdf",
+      "phone": "1231231232"
+    },
+    {
+      "id": "9c2f",
+      "name": "qwer",
+      "surname": "qwer",
+      "email": "qwer@qwer.qwer",
+      "phone": "8767867564"
     }
   ],
   "groups": [
@@ -59,27 +31,23 @@
     {
       "id": "94d8",
       "name": "VIP"
-    },
-    {
-      "name": "Curaci",
-      "id": "e84b"
     }
   ],
   "group_customer": [
     {
-      "id": "9839",
-      "id_customer": "9ff6",
-      "id_group": "5a36"
-    },
-    {
-      "id": "686c",
-      "id_customer": "d431",
+      "id": "d335",
+      "id_customer": "6407",
       "id_group": "1af0"
     },
     {
-      "id": "eeca",
-      "id_customer": "3a3a",
-      "id_group": "0481"
+      "id": "fc70",
+      "id_customer": "9c2f",
+      "id_group": "94d8"
+    },
+    {
+      "id": "1acf",
+      "id_customer": "9c2f",
+      "id_group": "5a36"
     }
   ]
 }

@@ -31,8 +31,8 @@ export const useGroupCustomerStore = defineStore('group_customer', () => {
       const response = await fetch('http://localhost:3000/group_customer')
       const data = await response.json()
       groupCustomer.value = data
-    } catch (error) {
-      console.error('Error loading groups:', error)
+    } catch (err) {
+      alert(err)
     } finally {
       isLoading.value = false
     }
