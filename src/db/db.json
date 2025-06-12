@@ -1,49 +1,55 @@
 {
   "customers": [
     {
-      "name": "Lukasek",
+      "name": "Lukas",
       "surname": "Dvorsky",
       "email": "dvorskejlukas3333@gmail.com",
       "phone": "737008313",
       "id": "9ff6"
     },
     {
-      "name": "Pepa",
-      "surname": "Zdepa",
-      "email": "pepa@seznam.cz",
-      "phone": "234234234",
-      "id": "adbe"
+      "name": "Lubos",
+      "surname": "Hrosek",
+      "email": "hrosek@gmail.veliky",
+      "phone": "123345468",
+      "id": "febf"
+    },
+    {
+      "id": "133a",
+      "name": "asdf",
+      "surname": "asdf",
+      "email": "123@123.xc",
+      "phone": "123123123"
+    },
+    {
+      "id": "8473",
+      "name": "asdf",
+      "surname": "asdfa",
+      "email": "sdf@asdfasef.cx",
+      "phone": "1233445456"
     }
   ],
   "groups": [
     {
-      "id_group": 1,
       "name": "QA",
       "id": "5a36"
     },
     {
-      "id_group": 2,
       "name": "Tester",
       "id": "1af0"
     },
     {
-      "id_group": 3,
       "name": "Developer",
       "id": "0481"
+    },
+    {
+      "id": "94d8",
+      "name": "VIP"
+    },
+    {
+      "id": "e84b",
+      "name": "Curacu"
     }
   ],
-  "group_customer": [
-    {
-      "id": "b333",
-      "id_group": 2
-    },
-    {
-      "id": "76da",
-      "id_group": 3
-    },
-    {
-      "id": "f21c",
-      "id_group": 1
-    }
-  ]
+  "group_customer": []
 }

@@ -3,14 +3,23 @@ import type { Customer } from '@/stores/customer'
 import { useCustomersStore } from '@/stores/customer'
 import { defineProps, ref } from 'vue'
 import Modal from '@/components/Modal.vue'
-import AddCustomer from '@/components/AddCustomer.vue'
+import AddCustomer from '@/components/CustomerForm.vue'
 
 const store = useCustomersStore()
-const showModal = ref(false)
 
 const props = defineProps<{
   customer: Customer
 }>()
+
+const handleDeleteCustomer = () => {
+  if (
+    window.confirm(
+      `Do you really want to remove customer: ${props.customer.name} ${props.customer.surname}`,
+    )
+  ) {
+    store.deleteCustomer(props.customer.id)
+  }
+}
 </script>
 
 <template>
@@ -19,8 +28,7 @@ const props = defineProps<{
     <p>{{ customer.email }}</p>
     <p>{{ customer.phone }}</p>
   </div>
-  <button @click="showModal = !showModal">Edit</button>
-  <Modal v-if="showModal" :form="AddCustomer" :data="customer" />
+  <Modal :form="AddCustomer" :data="customer" />
 
-  <button @click="store.deleteCustomer(customer.id)">Delete</button>
+  <button @click="handleDeleteCustomer">Delete</button>
 </template>

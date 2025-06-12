@@ -9,8 +9,15 @@ export interface Customer {
   phone: string
 }
 
+export interface CustomerGroups {
+  id: string
+  id_group: string
+  id_customer: string
+}
+
 export const useCustomersStore = defineStore('customers', () => {
   const customers = ref<Customer[]>([])
+  const customerGroups = ref<CustomerGroups[]>([])
   const isLoading = ref(true)
 
   const createCustomer = async (values: any) => {
