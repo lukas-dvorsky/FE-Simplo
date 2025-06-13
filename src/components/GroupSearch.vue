@@ -15,15 +15,17 @@ const emit = defineEmits<{
 
 <template>
   <div @focusin="showTags = true" @focusout="showTags = false">
-    <input type="text" v-model="searchTerm" />
-    <SearchTag
-      v-if="showTags"
-      v-for="group in groupStore.groups.filter((group) =>
-        group.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase().trim()),
-      )"
-      :key="group.id"
-      :group="group"
-      @select="emit('selectGroup', $event)"
-    />
+    <input type="text" v-model="searchTerm" class="text-large" placeholder="Select groups" />
+    <div class="group-search-container">
+      <SearchTag
+        v-if="showTags"
+        v-for="group in groupStore.groups.filter((group) =>
+          group.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase().trim()),
+        )"
+        :key="group.id"
+        :group="group"
+        @select="emit('selectGroup', $event)"
+      />
+    </div>
   </div>
 </template>

@@ -19,7 +19,6 @@ export const useGroupsStore = defineStore('groups', () => {
           'Content-Type': 'application/json',
         },
       })
-      alert('Group added succesfully')
     } catch (err) {
       alert(err)
     }
@@ -48,7 +47,6 @@ export const useGroupsStore = defineStore('groups', () => {
         body: JSON.stringify(updatedData),
       })
       readGroup()
-      alert('Group updated succesfully')
     } catch (err) {
       alert(err)
     }
@@ -60,7 +58,6 @@ export const useGroupsStore = defineStore('groups', () => {
         method: 'DELETE',
       })
       readGroup()
-      alert('Group deleted succesfully')
     } catch (err) {
       alert(err)
     }

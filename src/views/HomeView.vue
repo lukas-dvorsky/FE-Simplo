@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useCustomersStore } from '@/stores/customer.ts'
 import { onMounted } from 'vue'
-import Customer from '@/components/Customer.vue'
 import Group from '@/components/Group.vue'
 import CustomerForm from '@/components/CustomerForm.vue'
 import GroupForm from '@/components/GroupForm.vue'
@@ -22,23 +21,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <main>
-    <section>
-      <Modal :form="GroupForm" />
-      <div>
-        <Group v-for="group in groupStore.groups" :key="group.id" :group="group" />
-      </div>
-    </section>
-    <section>
-      <Modal :form="CustomerForm" />
-      <CustomerSearch />
-    </section>
-  </main>
+  <div class="layout">
+    <aside>
+      <h1 class="title">FE-SIMPLO</h1>
+      <Modal :form="GroupForm" button-text="Create Group" />
+      <Group v-for="group in groupStore.groups" :key="group.id" :group="group" />
+    </aside>
+    <main class="container">
+      <section>
+        <div style="margin: 2rem 0">
+          <Modal :form="CustomerForm" button-text="Create Customer" />
+        </div>
+        <CustomerSearch />
+      </section>
+    </main>
+  </div>
 </template>
-
-<style scoped>
-main {
-  display: flex;
-  gap: 400px;
-}
-</style>

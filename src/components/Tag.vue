@@ -12,6 +12,11 @@ const props = defineProps<{
 </script>
 
 <template>
-  <span>{{ props.data.name }}</span>
-  <button type="button" @click="emit('handleGroupRemove', props.data.id)">x</button>
+  <button
+    type="button"
+    @click="emit('handleGroupRemove', props.data.id)"
+    class="button tag text-black"
+  >
+    <span>{{ props.data.name }}</span>
+  </button>
 </template>

@@ -1,35 +1,252 @@
-@import './base.css';
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/*PAGE LAYOUT*/
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+aside {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+main {
   padding: 2rem;
-  font-weight: normal;
+  width: 100%;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+/* TEXT */
+.text-large {
+  font-size: 1.3rem;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.text-medium {
+  font-size: 1.1rem;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.title {
+  padding: 2rem;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.text-black {
+  color: black !important;
+}
+
+.text-error {
+  color: red !important;
+  margin-top: 2px;
+}
+
+/* OTHERS */
+.rounded-full {
+  border-radius: 100% !important;
+}
+
+/* CONTAINER */
+.container {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+/* SEARCH */
+.search {
+  margin-bottom: 16px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+/* BUTTONS */
+.button {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  border: none;
+  background-color: #133e87;
+  color: white;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button--small {
+  padding: 0.2rem 0.6rem;
+  margin: 0 0.2rem;
+  height: 2rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.button--medium {
+  padding: 0.4rem 0.6rem;
+}
+
+.button--large {
+  height: 2rem;
+  width: 8rem;
+}
+
+.button-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* TABLE */
+.table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table thead tr:first-child th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.table thead tr:first-child th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.table th {
+  background-color: #133e87;
+  color: white;
+  font-weight: bold;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* GROUPS */
+.group-list {
+  overflow-y: scroll;
+}
+
+.group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+  padding: 1rem;
+  width: 100%;
+}
+
+.group-options:first-child {
+  border-top: 1px rgba(0, 0, 0, 0.1) solid;
+}
+
+/* TAGS */
+.table-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  align-items: center;
+  height: 4rem;
+}
+
+.tag {
+  background-color: #eee;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+/* TABLE OPTIONS */
+.table-options {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+
+/* FOMRS */
+.modal {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5rem;
+  position: relative;
+  min-width: 25%;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.form form input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  outline: none;
+  width: 30rem;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  opacity: 80%;
+}
+
+.form-input label {
+  opacity: 50%;
+  padding-bottom: 5px;
+}
+
+/* GROUP SEARCH */
+.group-search-container {
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
 }

@@ -46,15 +46,18 @@ const handleDeleteCustomer = async () => {
 </script>
 
 <template>
-  <div>
-    <h3>{{ customer.name }} {{ customer.surname }}</h3>
-    <p>{{ customer.email }}</p>
-    <p>{{ customer.phone }}</p>
-  </div>
-  <div>
-    <CustomerTag v-for="group in customerGroups" :key="group.id" :tag-name="group.name" />
-  </div>
-  <Modal :form="AddCustomer" :data="customer" />
-
-  <button @click="handleDeleteCustomer">Delete</button>
+  <tr>
+    <td>{{ customer.name }}</td>
+    <td>{{ customer.surname }}</td>
+    <td>{{ customer.email }}</td>
+    <td class="table-tags">
+      <CustomerTag v-for="group in customerGroups" :key="group.id" :tag-name="group.name" />
+    </td>
+    <td>
+      <Modal :form="AddCustomer" :data="customer" />
+      <button @click="handleDeleteCustomer" class="button button--small">
+        <font-awesome-icon :icon="['fas', 'trash']" />
+      </button>
+    </td>
+  </tr>
 </template>

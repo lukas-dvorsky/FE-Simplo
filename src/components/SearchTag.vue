@@ -12,7 +12,11 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <button type="button" @mousedown.prevent="emit('select', props.group)">
+  <button
+    type="button"
+    @mousedown.prevent="emit('select', props.group)"
+    class="button tag text-black"
+  >
     {{ props.group.name }}
   </button>
 </template>

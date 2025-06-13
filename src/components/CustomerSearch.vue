@@ -39,18 +39,26 @@ const filteredCustomers = computed(() => {
 
 <template>
   <div>
-    <input v-model="searchQuery" placeholder="Search by name, email, phone or group..." />
+    <input
+      v-model="searchQuery"
+      placeholder="Search by name, email, phone or group..."
+      class="search customer-search"
+    />
     <div>
-      <Customer v-for="customer in filteredCustomers" :key="customer.id" :customer="customer" />
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width: 15%">Name</th>
+            <th style="width: 15%">Surname</th>
+            <th style="width: 25%">Email</th>
+            <th style="width: 30%">Groups</th>
+            <th style="width: 5%">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <Customer v-for="customer in filteredCustomers" :key="customer.id" :customer="customer" />
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
-
-<style scoped>
-input {
-  margin-bottom: 16px;
-  padding: 8px;
-  width: 100%;
-  box-sizing: border-box;
-}
-</style>

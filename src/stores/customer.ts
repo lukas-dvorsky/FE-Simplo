@@ -30,7 +30,6 @@ export const useCustomersStore = defineStore('customers', () => {
         },
       })
       const newCustomer = await response.json()
-      alert('Customer added succesfully')
       return newCustomer
     } catch (err) {
       alert(err)
@@ -60,7 +59,6 @@ export const useCustomersStore = defineStore('customers', () => {
         body: JSON.stringify(updatedData),
       })
       readCustomer()
-      alert('Customer updated succesfully')
     } catch (err) {
       alert(err)
     }
@@ -72,7 +70,6 @@ export const useCustomersStore = defineStore('customers', () => {
         method: 'DELETE',
       })
       readCustomer()
-      alert('Customer deleted succesfully')
     } catch (err) {
       alert(err)
     }

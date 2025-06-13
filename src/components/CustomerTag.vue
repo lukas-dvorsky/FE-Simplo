@@ -7,5 +7,5 @@ const props = defineProps({
 </script>
 
 <template>
-  <p>{{ tagName }}</p>
+  <p class="tag text-black">{{ tagName }}</p>
 </template>

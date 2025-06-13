@@ -123,37 +123,46 @@ const handleGroupRemove = (id: string) => {
 </script>
 
 <template>
-  <section>
-    <button @click="emit('hideModal')">HIDE</button>
-    <form @submit="onSubmit">
-      <div>
-        <input v-model="name" placeholder="Jméno" />
-      </div>
+  <div class="modal">
+    <div class="form">
+      <button @click="emit('hideModal')" class="button button--small button-close">X</button>
+      <form @submit="onSubmit">
+        <div class="form-input">
+          <label for="name">Name</label>
+          <input v-model="name" name="name" class="text-medium" />
+          <span v-if="errors" class="text-error">{{ errors.name }}</span>
+        </div>
+        <div class="form-input">
+          <label for="surname">Surname</label>
+          <input v-model="surname" name="surname" class="text-medium" />
+          <span v-if="errors" class="text-error">{{ errors.surname }}</span>
+        </div>
+        <div class="form-input">
+          <label for="email">Email</label>
+          <input v-model="email" name="email" class="text-medium" />
+          <span v-if="errors" class="text-error">{{ errors.email }}</span>
+        </div>
+        <div class="form-input">
+          <label for="phone">Phone</label>
+          <input v-model="phone" name="phone" class="text-medium" />
+          <span v-if="errors" class="text-error">{{ errors.phone }}</span>
+        </div>
 
-      <div>
-        <input v-model="surname" placeholder="Příjmení" />
-      </div>
+        <GroupSearch @selectGroup="handleGroupSelect" />
+        <div class="group-search-container">
+          <Tag
+            v-for="selectedGroup in selectedGroups"
+            :key="selectedGroup.id"
+            :data="selectedGroup"
+            @handle-group-remove="handleGroupRemove"
+          />
+        </div>
 
-      <div>
-        <input v-model="email" placeholder="E-mail" />
-      </div>
-
-      <div>
-        <input v-model="phone" placeholder="Telefon" />
-      </div>
-
-      <GroupSearch @selectGroup="handleGroupSelect" />
-      <Tag
-        v-for="selectedGroup in selectedGroups"
-        :key="selectedGroup.id"
-        :data="selectedGroup"
-        @handle-group-remove="handleGroupRemove"
-      />
-
-      <button v-if="props.data" type="submit">Update</button>
-      <button v-else type="submit">Create</button>
-    </form>
-  </section>
+        <button v-if="props.data" type="submit" class="button button--small">Update</button>
+        <button v-else type="submit" class="button button--small">Create</button>
+      </form>
+    </div>
+  </div>
 </template>
 
 <style scoped>

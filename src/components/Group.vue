@@ -29,9 +29,13 @@ const handleDeleteGroup = async () => {
 </script>
 
 <template>
-  <div>
-    <span>{{ props.group.name }}</span>
-    <Modal :form="GroupForm" :data="group" />
-    <button @click="handleDeleteGroup">Delete</button>
+  <div class="group-item">
+    <span class="text-medium">{{ props.group.name }}</span>
+    <div>
+      <Modal :form="GroupForm" :data="group" />
+      <button @click="handleDeleteGroup" class="button button--small">
+        <font-awesome-icon :icon="['fas', 'trash']" />
+      </button>
+    </div>
   </div>
 </template>

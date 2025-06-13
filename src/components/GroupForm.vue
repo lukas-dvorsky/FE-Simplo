@@ -52,13 +52,19 @@ const onSubmit = handleSubmit(async (values) => {
 </script>
 
 <template>
-  <button @click="emit('hideModal')">HIDE</button>
-  <form @submit="onSubmit">
-    <div>
-      <input v-model="name" placeholder="Jméno" />
-    </div>
+  <div class="modal">
+    <div class="form">
+      <button @click="emit('hideModal')" class="button button--small button-close">X</button>
+      <form @submit="onSubmit">
+        <div class="form-input">
+          <label for="name">Name</label>
+          <input v-model="name" name="name" class="text-large" />
+          <span v-if="errors" class="text-error">{{ errors.name }}</span>
+        </div>
 
-    <button v-if="props.data" type="submit">Update</button>
-    <button v-else type="submit">Create</button>
-  </form>
+        <button v-if="props.data" type="submit" class="button button--small">Update</button>
+        <button v-else type="submit" class="button button--small">Create</button>
+      </form>
+    </div>
+  </div>
 </template>

@@ -1,92 +1,54 @@
 {
   "customers": [
     {
-      "id": "c56d",
-      "name": "Lukas",
-      "surname": "Dvorsky",
-      "email": "dvorskejlukas3333@gmail.com",
-      "phone": "737008313"
+      "name": "John",
+      "surname": "Doe",
+      "email": "johndoe@gmail.com",
+      "phone": "606606606",
+      "id": "b25f"
     },
     {
-      "id": "e74f",
-      "name": "Michal",
-      "surname": "Spanel",
-      "email": "jsem@spanel.fakt",
-      "phone": "123345675"
-    },
-    {
-      "id": "efa8",
-      "name": "Lubos",
-      "surname": "Hrosek",
-      "email": "hrosek@lubos.fakt",
-      "phone": "666777555"
-    },
-    {
-      "id": "67fc",
-      "name": "Streda",
-      "surname": "Wednesday",
-      "email": "streda@seznam.cz",
-      "phone": "876703454"
+      "id": "f905",
+      "name": "George",
+      "surname": "Doe",
+      "email": "george@gmail.com",
+      "phone": "502606789"
     }
   ],
   "groups": [
     {
-      "name": "QA",
-      "id": "5a36"
+      "id": "af6f",
+      "name": "Group #1"
     },
     {
-      "name": "Tester",
-      "id": "1af0"
+      "id": "fdac",
+      "name": "Group #2"
     },
     {
-      "name": "Developer",
-      "id": "0481"
-    },
-    {
-      "id": "94d8",
-      "name": "VIP"
+      "id": "cd94",
+      "name": "Group #3"
     }
   ],
   "group_customer": [
     {
-      "id": "0ae7",
-      "id_customer": "c56d",
-      "id_group": "5a36"
+      "id": "6a8c",
+      "id_customer": "b25f",
+      "id_group": "af6f"
     },
     {
-      "id": "13bc",
-      "id_customer": "c56d",
-      "id_group": "1af0"
+      "id": "840f",
+      "id_customer": "f905",
+      "id_group": "cd94"
     },
     {
-      "id": "42cd",
-      "id_customer": "e74f",
-      "id_group": "94d8"
+      "id": "41f6",
+      "id_customer": "f905",
+      "id_group": "fdac"
     },
     {
-      "id": "4bac",
-      "id_customer": "e74f",
-      "id_group": "0481"
-    },
-    {
-      "id": "409b",
-      "id_customer": "efa8",
-      "id_group": "1af0"
-    },
-    {
-      "id": "8eb3",
-      "id_customer": "efa8",
-      "id_group": "94d8"
-    },
-    {
-      "id": "9892",
-      "id_customer": "67fc",
-      "id_group": "1af0"
-    },
-    {
-      "id": "dfb7",
-      "id_customer": "67fc",
-      "id_group": "94d8"
+      "id": "7c62",
+      "id_customer": "b25f",
+      "id_group": "fdac"
     }
   ]
 }
