@@ -8,6 +8,7 @@ import GroupForm from '@/components/GroupForm.vue'
 import Modal from '@/components/Modal.vue'
 import { useGroupsStore } from '@/stores/group'
 import { useGroupCustomerStore } from '@/stores/group_customer'
+import CustomerSearch from '@/components/CustomerSearch.vue'
 
 const customerStore = useCustomersStore()
 const groupStore = useGroupsStore()
@@ -30,17 +31,7 @@ onMounted(() => {
     </section>
     <section>
       <Modal :form="CustomerForm" />
-      <div>
-        <!-- SEARCH BAR -->
-      </div>
-      <div>
-        <!-- CUSTOMERS LIST -->
-        <Customer
-          v-for="customer in customerStore.customers"
-          :key="customer.id"
-          :customer="customer"
-        />
-      </div>
+      <CustomerSearch />
     </section>
   </main>
 </template>

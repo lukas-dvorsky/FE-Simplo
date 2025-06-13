@@ -1,18 +1,32 @@
 {
   "customers": [
     {
-      "id": "6407",
-      "name": "asdf",
-      "surname": "asdf",
-      "email": "asdf@asdf.asdf",
-      "phone": "1231231232"
+      "id": "c56d",
+      "name": "Lukas",
+      "surname": "Dvorsky",
+      "email": "dvorskejlukas3333@gmail.com",
+      "phone": "737008313"
     },
     {
-      "id": "9c2f",
-      "name": "qwer",
-      "surname": "qwer",
-      "email": "qwer@qwer.qwer",
-      "phone": "8767867564"
+      "id": "e74f",
+      "name": "Michal",
+      "surname": "Spanel",
+      "email": "jsem@spanel.fakt",
+      "phone": "123345675"
+    },
+    {
+      "id": "efa8",
+      "name": "Lubos",
+      "surname": "Hrosek",
+      "email": "hrosek@lubos.fakt",
+      "phone": "666777555"
+    },
+    {
+      "id": "67fc",
+      "name": "Streda",
+      "surname": "Wednesday",
+      "email": "streda@seznam.cz",
+      "phone": "876703454"
     }
   ],
   "groups": [
@@ -35,19 +49,44 @@
   ],
   "group_customer": [
     {
-      "id": "d335",
-      "id_customer": "6407",
+      "id": "0ae7",
+      "id_customer": "c56d",
+      "id_group": "5a36"
+    },
+    {
+      "id": "13bc",
+      "id_customer": "c56d",
       "id_group": "1af0"
     },
     {
-      "id": "fc70",
-      "id_customer": "9c2f",
+      "id": "42cd",
+      "id_customer": "e74f",
       "id_group": "94d8"
     },
     {
-      "id": "1acf",
-      "id_customer": "9c2f",
-      "id_group": "5a36"
+      "id": "4bac",
+      "id_customer": "e74f",
+      "id_group": "0481"
+    },
+    {
+      "id": "409b",
+      "id_customer": "efa8",
+      "id_group": "1af0"
+    },
+    {
+      "id": "8eb3",
+      "id_customer": "efa8",
+      "id_group": "94d8"
+    },
+    {
+      "id": "9892",
+      "id_customer": "67fc",
+      "id_group": "1af0"
+    },
+    {
+      "id": "dfb7",
+      "id_customer": "67fc",
+      "id_group": "94d8"
     }
   ]
 }
